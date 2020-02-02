@@ -1,20 +1,21 @@
 'use strict';
 
 const path                    = require('path');
+const paths = require('./paths');
 const webpack                 = require('webpack');
 const MiniCssExtractPlugin    = require("mini-css-extract-plugin");
 const TSConfigPathsPlugin     = require('tsconfig-paths-webpack-plugin');
 const TSLintPlugin            = require('tslint-webpack-plugin');
 const CopyWebpackPlugin       = require('copy-webpack-plugin');
 const { CleanWebpackPlugin }  = require('clean-webpack-plugin');
-
+const ManifestPlugin = require('webpack-manifest-plugin');
 const SOURCE_ROOT = __dirname + '/src/main/webpack';
 
 module.exports = {
         resolve: {
             extensions: ['.js', '.ts'],
             plugins: [new TSConfigPathsPlugin({
-                configFile: "./tsconfig.json"
+                configFile: paths.tsConfig
             })]
         },
         entry: {
@@ -22,7 +23,7 @@ module.exports = {
         },
         output: {
             filename: 'clientlib-site/js/[name].bundle.js',
-            path: path.resolve(__dirname, 'dist')
+            path: paths.clientLibRoot
         },
         optimization: {
             splitChunks: {
@@ -94,6 +95,9 @@ module.exports = {
             ]
         },
         plugins: [
+            new ManifestPlugin({
+                fileName: 'asset-manifest.json'
+            }),
             new CleanWebpackPlugin(),
             new webpack.NoEmitOnErrorsPlugin(),
             new MiniCssExtractPlugin({
