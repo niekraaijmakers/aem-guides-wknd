@@ -29,9 +29,8 @@ public class AssetManifestServiceImpl implements AssetManifestService {
     
     @Override
     public Manifest getManifest(SlingHttpServletRequest request) throws IOException, LoginException {
-    
-        try(ResourceResolver rr = factory.getAdministrativeResourceResolver(null)){
-            Resource assetManifestResource = rr.getResource(PATH_TO_ASSET_MANIFEST);
+        
+            Resource assetManifestResource = request.getResourceResolver().getResource(PATH_TO_ASSET_MANIFEST);
     
             if(assetManifestResource != null){
                 InputStream file = assetManifestResource.adaptTo(InputStream.class);
@@ -41,7 +40,7 @@ public class AssetManifestServiceImpl implements AssetManifestService {
             }else{
                 throw new IOException("Could not load manifest file!");
             }
-        }
+        
         
         
     }
