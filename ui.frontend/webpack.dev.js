@@ -17,8 +17,8 @@ module.exports = merge(common, {
    devServer: {
       inline: true,
       proxy: [{
-         context: ['/content', '/etc.clientlibs'],
-         target: 'http://localhost:4502',
+         context: ['/content', '/etc.clientlibs', '/etc/wknd'],
+         target: 'http://localhost:4503',
       }]
    }
 });
