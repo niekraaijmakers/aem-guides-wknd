@@ -11,6 +11,8 @@ const { CleanWebpackPlugin }  = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const SOURCE_ROOT = __dirname + '/src/main/webpack';
 
+const publicPath = paths.clientLibRelativePath + '/';
+
 module.exports = {
         resolve: {
             extensions: ['.js', '.ts'],
@@ -19,16 +21,40 @@ module.exports = {
             })]
         },
         entry: {
-            site: SOURCE_ROOT + '/site/main.js'
+            site: paths.entryPoint
         },
         output: {
-            filename: 'clientlib-site/js/[name].bundle.js',
-            path: paths.clientLibRoot
+            path: paths.clientLibRoot,
+            filename: 'js/[name].bundle.js',
+            // There are also additional JS chunk files if you use code splitting.
+            chunkFilename: 'js/[name].[hash:8].js',
+            // This is the URL that app is served from. We use "/" in development.
+            publicPath: publicPath,
         },
         optimization: {
             splitChunks: {
-                   chunks: 'all'
-                 }
+                chunks: 'async',
+                minSize: 30000,
+                minChunks: 1,
+                maxAsyncRequests: 5,
+                maxInitialRequests: 3,
+                automaticNameDelimiter: '~',
+                name: true,
+                cacheGroups: {
+                    vendors: {
+                        test: /[\\/]node_modules[\\/]/,
+                        priority: -10
+                    },
+                    default: {
+                        minChunks: 2,
+                        priority: -20,
+                        reuseExistingChunk: true
+                    }
+                }
+            },
+            runtimeChunk: {
+                name: 'bootstrap',
+            },
         },
         module: {
             rules: [
