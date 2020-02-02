@@ -127,14 +127,15 @@ module.exports = {
             new CleanWebpackPlugin(),
             new webpack.NoEmitOnErrorsPlugin(),
             new MiniCssExtractPlugin({
-                filename: 'clientlib-site/css/[name].bundle.css',
+                filename: 'css/[name].css',
+                chunkFilename: 'css/[name].[hash:8].css',
             }),
             new TSLintPlugin({
                 files: [SOURCE_ROOT + '/**/*.ts', SOURCE_ROOT + '/**/*.tsx'],
                 config: './tslint.json'
             }),
             new CopyWebpackPlugin([
-                { from: path.resolve(__dirname, SOURCE_ROOT + '/resources'), to: './clientlib-site/resources' }
+                { from: paths.sources + '/resources', to: paths.clientLibRoot + '/resources' }
             ])
         ],
         stats: {
