@@ -2,5 +2,6 @@
 <workspaceFilter version="1.0">
     <filter root="/apps/wknd"/>
     <filter root="/etc/wknd"/>
+    <filter root="/etc/map.local.publish"/>
     <filter root="/apps/msm/wknd_blueprint" mode="merge"/>
 </workspaceFilter>

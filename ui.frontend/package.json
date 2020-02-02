@@ -15,7 +15,7 @@
     "start": "webpack-dev-server --open --config ./webpack.dev.js",
     "storybook": "start-storybook -p 6006",
     "start-aempack": "node scripts/aempack.js",
-    "start-aempack-pub": "cross-env PROXYHOST=wknd.com AEMPORT=4503 cross-env NODE_ENV=development npm-run-all -p start-aempack"
+    "start-aempack-pub": "cross-env PROXYHOST=local.wknd.com AEMPORT=4503 cross-env NODE_ENV=development npm-run-all -p start-aempack"
   },
   "devDependencies": {
     "aempack": "^1.0.1",
