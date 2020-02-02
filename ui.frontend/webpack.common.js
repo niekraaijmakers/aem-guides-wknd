@@ -124,7 +124,9 @@ module.exports = {
             new ManifestPlugin({
                 fileName: 'asset-manifest.json'
             }),
-            new CleanWebpackPlugin(),
+            new CleanWebpackPlugin({
+                cleanOnceBeforeBuildPatterns: ['**/*', '!*.xml']
+            }),
             new webpack.NoEmitOnErrorsPlugin(),
             new MiniCssExtractPlugin({
                 filename: 'css/[name].css',
