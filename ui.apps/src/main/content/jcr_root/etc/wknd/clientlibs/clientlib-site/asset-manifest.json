@@ -1,8 +1,7 @@
 {
   "bootstrap.js": "/etc/wknd/clientlibs/clientlib-site/js/bootstrap.bundle.js",
-  "site.css": "/etc/wknd/clientlibs/clientlib-site/css/site.586a049c.css",
-  "site.js": "/etc/wknd/clientlibs/clientlib-site/js/site.586a049c.js",
-  "index.html": "/etc/wknd/clientlibs/clientlib-site/index.html",
+  "site.css": "/etc/wknd/clientlibs/clientlib-site/css/site.13467d2e.css",
+  "site.js": "/etc/wknd/clientlibs/clientlib-site/js/site.13467d2e.js",
   "resources/fonts/wknd-icon-font.svg": "/etc/wknd/clientlibs/clientlib-site/resources/fonts/wknd-icon-font.svg",
   "resources/fonts/wknd-icon-font.ttf": "/etc/wknd/clientlibs/clientlib-site/resources/fonts/wknd-icon-font.ttf",
   "resources/fonts/wknd-icon-font.woff": "/etc/wknd/clientlibs/clientlib-site/resources/fonts/wknd-icon-font.woff",

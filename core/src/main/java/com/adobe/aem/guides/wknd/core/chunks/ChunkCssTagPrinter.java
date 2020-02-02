@@ -2,6 +2,7 @@ package com.adobe.aem.guides.wknd.core.chunks;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
+import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -29,10 +30,14 @@ public class ChunkCssTagPrinter extends SlingSafeMethodsServlet {
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
         final PrintWriter writer = response.getWriter();
-        writer.append(printMainCssTag(request));
+        try {
+            writer.append(printMainCssTag(request));
+        } catch (LoginException e) {
+            throw new ServletException(e);
+        }
     }
     
-    private String printMainCssTag(SlingHttpServletRequest request) throws IOException {
+    private String printMainCssTag(SlingHttpServletRequest request) throws IOException, LoginException {
         return String.format(CSS_TAG, manifestService.getManifest(request).getSiteCss());
     }
     

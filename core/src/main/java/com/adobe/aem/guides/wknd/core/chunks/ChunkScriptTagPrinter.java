@@ -2,6 +2,7 @@ package com.adobe.aem.guides.wknd.core.chunks;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
+import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -29,16 +30,21 @@ public class ChunkScriptTagPrinter extends SlingSafeMethodsServlet {
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
         final PrintWriter writer = response.getWriter();
     
-        writer.append(printBootStrapJSTag(request));
-        writer.append(printMainJSTag(request));
+        try {
+            writer.append(printBootStrapJSTag(request));
+            writer.append(printMainJSTag(request));
+        } catch (LoginException e) {
+            throw new ServletException(e);
+        }
+        
     }
   
     
-    private String printBootStrapJSTag(SlingHttpServletRequest request) throws IOException {
+    private String printBootStrapJSTag(SlingHttpServletRequest request) throws IOException, LoginException {
         return String.format(SCRIPT_TAG, manifestService.getManifest(request).getBootstrap());
     }
     
-    private String printMainJSTag(SlingHttpServletRequest request) throws IOException {
+    private String printMainJSTag(SlingHttpServletRequest request) throws IOException, LoginException {
         return String.format(SCRIPT_TAG, manifestService.getManifest(request).getSiteJS());
     }
     
