@@ -18,7 +18,7 @@
     "start-aempack-pub": "cross-env PROXYHOST=local.wknd.com AEMPORT=4503 cross-env NODE_ENV=development npm-run-all -p start-aempack"
   },
   "devDependencies": {
-    "aempack": "^1.0.2",
+    "aempack": "^1.0.4",
     "cross-env": "^5.2.0",
     "npm-run-all": "^4.1.5",
     "webpack-manifest-plugin": "2.0.4",
