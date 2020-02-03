@@ -10,7 +10,6 @@ jQuery(function($) {
      */
     $('body').on('click', '[data-modal-url]', showModal);
 
-
     /**
      * Handle clicking "off-modal" to hide it
      */
