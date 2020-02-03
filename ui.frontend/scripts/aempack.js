@@ -6,7 +6,7 @@ const paths = require('../paths');
 const aemPack = require('aempack');
 
 const developWithSSR = process.env.DEVELOPSSR || 'false';
-const webpackConfig = require('./../webpack.dev');
+const webpackConfig = require('./../webpack.aem-dev');
 
 const user = process.env.AEMUSER  || 'admin';
 const password = process.env.AEMPW || 'admin';
