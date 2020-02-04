@@ -25,7 +25,7 @@ module.exports = {
         },
         output: {
             path: paths.clientLibRoot,
-            filename: 'js/[name].bundle.js',
+            filename: 'js/[name].[hash:8].js',
             // There are also additional JS chunk files if you use code splitting.
             chunkFilename: 'js/[name].[hash:8].js',
             // This is the URL that app is served from. We use "/" in development.
