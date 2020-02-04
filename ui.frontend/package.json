@@ -25,7 +25,7 @@
     "@types/jquery": "^3.3.31",
     "acorn": "^6.1.0",
     "aem-clientlib-generator": "^1.4.3",
-    "aempack": "^1.0.9",
+    "aempack": "^1.1.0",
     "autoprefixer": "^9.2.1",
     "babel-loader": "^8.0.6",
     "browserslist": "^4.2.1",
